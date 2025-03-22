@@ -3,7 +3,7 @@
 class Vehicle:
     def __init__(self,  brand, model, year):
         # Приватный атрибут марка производителя
-        self.__make =  brand
+        self.__brand =  brand
         # Приватны атрибут модель
         self.__model = model
         # Год выпуска
@@ -14,20 +14,20 @@ class Vehicle:
     #Проверяем статус, двигается ли транспорт или нет
     def move(self):
         self.__is_moving = True
-        return f"{self.year} {self.__make} {self.__model} Выехал."
+        return f"{self.year} {self.__brand} {self.__model} Выехал."
 
     def stop(self):
         self.__is_moving = False
-        return f"{self.year} {self.__make} {self.__model} Припаркован."
+        return f"{self.year} {self.__brand} {self.__model} Припаркован."
 
     def check_status(self):
         if self.__is_moving:
-            return f"{self.year} {self.__make} {self.__model} Сейчас в движении."
+            return f"{self.year} {self.__brand} {self.__model} Сейчас в движении."
         else:
-            return f"{self.year} {self.__make} {self.__model} Сейчас не двигается."
+            return f"{self.year} {self.__brand} {self.__model} Сейчас не двигается."
 
-    def get_make(self):
-        return self.__make
+    def get_brand(self):
+        return self.__brand
 
     def get_model(self):
         return self.__model
@@ -46,40 +46,40 @@ class ElectricalVehicle:
 
 # Класс Car, наследующий от Vehicle
 class Car(Vehicle):
-    def __init__(self, make, model, year, num_doors):
-        super().__init__(make, model, year)
+    def __init__(self, brand, model, year, num_doors):
+        super().__init__(brand, model, year)
         self.num_doors = num_doors
 
     def open_trunk(self):
-        return f"{self.year} {self.get_make()} {self.get_model()} багажник открыт."
+        return f"{self.year} {self.get_brand()} {self.get_model()} багажник открыт."
 
 # Класс Motorcycle, наследующий от Vehicle
 class Motorcycle(Vehicle):
-    def __init__(self, make, model, year, has_kickstand):
-        super().__init__(make, model, year)
+    def __init__(self, brand, model, year, has_kickstand):
+        super().__init__(brand, model, year)
         #Добавляем уникальный атрибут - боковая подножка
         self.has_kickstand = has_kickstand
 
     def use_kickstand(self):
         if self.has_kickstand:
-            return f"Боковая подножка {self.year} {self.get_make()} {self.get_model()} использована."
+            return f"Боковая подножка {self.year} {self.get_brand()} {self.get_model()} использована."
         else:
-            return f"У {self.year} {self.get_make()} {self.get_model()} нет боковой подножки."
+            return f"У {self.year} {self.get_brand()} {self.get_model()} нет боковой подножки."
 
 # Класс Truck, наследующий от Vehicle
 class Truck(Vehicle):
-    def __init__(self, make, model, year, cargo_capacity):
-        super().__init__(make, model, year)
+    def __init__(self, brand, model, year, cargo_capacity):
+        super().__init__(brand, model, year)
         #добавляем уникальный атрибут - вес груза
         self.cargo_capacity = cargo_capacity
 
     def load_cargo(self):
-        return f"{self.year} {self.get_make()} {self.get_model()} загружен груз емкостью {self.cargo_capacity} тонн."
+        return f"{self.year} {self.get_brand()} {self.get_model()} загружен груз емкостью {self.cargo_capacity} тонн."
 
 # Класс ElectricalCar, наследующий от Car и ElectricalVehicle (двойное наследование от родительских классов)
 class ElectricalCar(Car, ElectricalVehicle):
-    def __init__(self, make, model, year, num_doors, battery_capacity):
-        Car.__init__(self, make, model, year, num_doors)
+    def __init__(self, brand, model, year, num_doors, battery_capacity):
+        Car.__init__(self, brand, model, year, num_doors)
         ElectricalVehicle.__init__(self, battery_capacity)
 
 # создаение экзепляров
